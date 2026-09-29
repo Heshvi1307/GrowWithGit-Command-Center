@@ -116,5 +116,5 @@ npm run build
 
 ## 👤 AUTHOR & ACKNOWLEDGMENTS
 
-Built with ❤️ for the **Git Club at CSPIT, CHARUSAT University**.  
-**Developer GitHub:** [Heshvi1307](https://github.com/Heshvi1307)
+For the **Git Club at CSPIT, CHARUSAT University**.  
+
