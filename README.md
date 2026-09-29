@@ -11,7 +11,7 @@
 
 ---
 
-## 📌 PROBLEM STATEMENT 5
+## 📌 PROBLEM STATEMENT
 ### **Git Club Command Center — The Club's Internal Dashboard**
 
 * **Problem Context:** Managing student clubs, workshops, hackathons, open-source projects, and event admissions manually leads to fragmentation, lost attendee records, lack of visibility into student domain skills, and chaotic check-in desks.
