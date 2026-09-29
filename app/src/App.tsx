@@ -19,6 +19,8 @@ import { SettingsModal } from './components/SettingsModal';
 import { QuickAction, QuickActionModal } from './components/QuickActionModal';
 import { Login, Session, loadSession, saveSession } from './components/Login';
 
+import { getAssetUrl } from './utils/assetHelper';
+
 const STORAGE = { role:'gwg_role_v4', member:'gwg_active_member_v4', members:'gwg_members_v4', events:'gwg_events_v4', projects:'gwg_projects_v4', approvals:'gwg_approvals_v4', announcements:'gwg_announcements_v4', activity:'gwg_activity_v4' };
 
 const seedAnnouncements = [
@@ -229,7 +231,7 @@ export default function App() {
     return <Login onLogin={handleLogin} />;
   }
 
-  const bg = <div className="galaxy-bg" aria-hidden="true"><img src="/galaxy-bg.jpg" alt="" width={2048} height={768} /></div>;
+  const bg = <div className="galaxy-bg" aria-hidden="true"><img src={getAssetUrl('galaxy-bg.jpg')} alt="" width={2048} height={768} /></div>;
 
   return (
     <div className="app-shell min-h-dvh flex flex-col xl:flex-row selection:bg-[#f05032] selection:text-white">

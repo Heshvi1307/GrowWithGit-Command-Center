@@ -15,6 +15,7 @@ import {
 import { CommandEvent } from '../types/commandCenter';
 import { ClubEventItem } from '../types/store';
 import { formatEventDateTimeRange } from '../utils/dateFormatter';
+import { getAssetUrl } from '../utils/assetHelper';
 
 interface EventDetailDrawerProps {
   event: any | null;
@@ -81,7 +82,7 @@ const EventDetailDrawerInner: React.FC<EventDetailDrawerProps> = ({ event, onClo
               {(event.posterUrl || event.title?.includes('Code Wizards') || event.title?.includes('Treasure Hunt') || event.title?.includes('Git & GitHub')) && (
                 <div className="mb-4 rounded-2xl overflow-hidden border border-slate-200 bg-slate-900 shadow-lg">
                   <img
-                    src={event.posterUrl || (event.title?.includes('Code Wizards') ? '/code-wizards-poster.png' : event.title?.includes('Treasure Hunt') ? '/treasure-hunt-poster.png' : '/git-workshop-poster.png')}
+                    src={event.posterUrl ? getAssetUrl(event.posterUrl) : (event.title?.includes('Code Wizards') ? getAssetUrl('code-wizards-poster.png') : event.title?.includes('Treasure Hunt') ? getAssetUrl('treasure-hunt-poster.png') : getAssetUrl('git-workshop-poster.png'))}
                     alt={event.title}
                     className="w-full max-h-72 object-contain bg-slate-950"
                   />

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Eye, EyeOff, LogIn, ShieldCheck, Calendar, User, AlertCircle, Sparkles, UserPlus, Check, Key, Mail, Lock, ArrowRight } from 'lucide-react';
 import { UserRole, ClubMemberItem } from '../types/store';
+import { getAssetUrl } from '../utils/assetHelper';
 
 export interface Session { email: string; name: string; role: UserRole; expires: number; }
 
@@ -113,7 +114,7 @@ export const Login: React.FC<LoginProps> = ({ onLogin }) => {
     <main className="min-h-dvh flex items-center justify-center p-4 lg:p-10 relative overflow-hidden bg-[#070816]">
       {/* Background Galaxy Layer */}
       <div className="galaxy-bg" aria-hidden="true">
-        <img src="/galaxy-bg.jpg" alt="" width={2048} height={768} className="w-full h-full object-cover" />
+        <img src={getAssetUrl('galaxy-bg.jpg')} alt="" width={2048} height={768} className="w-full h-full object-cover" />
       </div>
 
       <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
@@ -122,8 +123,19 @@ export const Login: React.FC<LoginProps> = ({ onLogin }) => {
         <div className="hidden lg:flex lg:col-span-7 flex-col items-start justify-center space-y-8 pr-6">
           
           {/* Prominent White Circle Logo Badge */}
-          <div className="w-56 h-56 rounded-full bg-white p-5 shadow-[0_0_80px_rgba(124,92,255,0.45)] border-4 border-white/20 flex items-center justify-center transform hover:scale-105 transition-transform duration-300">
-            <img src="/growwithgit-logo.png" alt="#GrowWithGit Logo" className="w-full h-full object-contain rounded-full" />
+          <div className="w-56 h-56 rounded-full bg-white p-5 shadow-[0_0_80px_rgba(124,92,255,0.45)] border-4 border-white/20 flex items-center justify-center transform hover:scale-105 transition-transform duration-300 relative overflow-hidden">
+            <img 
+              src={getAssetUrl('growwithgit-logo.png')} 
+              alt="#GrowWithGit Logo" 
+              className="w-full h-full object-contain rounded-full relative z-10"
+              onError={(e) => {
+                const target = e.currentTarget;
+                if (!target.dataset.triedFallback) {
+                  target.dataset.triedFallback = 'true';
+                  target.src = getAssetUrl('logo.png');
+                }
+              }}
+            />
           </div>
 
           {/* Headline Typography Matching Screenshot */}
@@ -149,8 +161,19 @@ export const Login: React.FC<LoginProps> = ({ onLogin }) => {
             
             {/* Logo Badge Header */}
             <div className="flex flex-col items-center text-center">
-              <div className="w-16 h-16 rounded-full bg-white p-1.5 shadow-[0_0_24px_rgba(240,80,50,0.5)] flex items-center justify-center shrink-0 mb-3">
-                <img src="/growwithgit-logo.png" alt="Git Logo" className="w-full h-full object-contain rounded-full" />
+              <div className="w-16 h-16 rounded-full bg-white p-1.5 shadow-[0_0_24px_rgba(240,80,50,0.5)] flex items-center justify-center shrink-0 mb-3 relative overflow-hidden">
+                <img 
+                  src={getAssetUrl('growwithgit-logo.png')} 
+                  alt="#GrowWithGit Logo" 
+                  className="w-full h-full object-contain rounded-full relative z-10"
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    if (!target.dataset.triedFallback) {
+                      target.dataset.triedFallback = 'true';
+                      target.src = getAssetUrl('logo.png');
+                    }
+                  }}
+                />
               </div>
               <h2 className="text-2xl font-black text-white font-heading tracking-tight">Git Club Command Center</h2>
               <p className="text-xs font-semibold text-slate-300 mt-1">Build. Collaborate. Ship.</p>

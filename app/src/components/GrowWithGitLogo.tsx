@@ -1,4 +1,5 @@
 import React from 'react';
+import { getAssetUrl } from '../utils/assetHelper';
 
 interface GrowWithGitLogoProps {
   size?: 'sm' | 'md' | 'lg' | 'xl';
@@ -26,9 +27,16 @@ export const GrowWithGitLogo: React.FC<GrowWithGitLogoProps> = ({
         style={{ width: dimension, height: dimension }}
       >
         <img
-          src="/growwithgit-logo.png"
+          src={getAssetUrl('growwithgit-logo.png')}
           alt="#GrowWith git logo"
           className="w-full h-full object-cover"
+          onError={(e) => {
+            const target = e.currentTarget;
+            if (!target.dataset.triedFallback) {
+              target.dataset.triedFallback = 'true';
+              target.src = getAssetUrl('logo.png');
+            }
+          }}
         />
       </div>
       {showText && (
@@ -43,3 +51,4 @@ export const GrowWithGitLogo: React.FC<GrowWithGitLogoProps> = ({
     </div>
   );
 };
+
